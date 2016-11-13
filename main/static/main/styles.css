@@ -1,0 +1,17 @@
+body {
+	background: white;
+	font-family: 'Open Sans';
+}
+
+.navbar {
+	border-radius: 0;
+}
+
+.navbar-brand {
+	font-family: 'Josefin Sans', cursive;
+}
+
+.sendHeading {
+	text-align: center;
+}
+
