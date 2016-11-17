@@ -7,4 +7,8 @@ class SubmitForm(forms.Form):
 	recipient = forms.IntegerField()
 	amount = forms.IntegerField()
 	energyType = forms.ChoiceField(widget=forms.RadioSelect, choices=CHOICES)
+
+class ControlForm(forms.Form):
+	temperature = forms.IntegerField()
+	
 	
