@@ -10,9 +10,12 @@ class MainView(View):
 	
 	def get(self, request):
 		tup = services.getBalances(request)
-		electricity = tup[0]
-		water = tup[1]
-		return render(request, self.template_name, {'electricity': int(electricity), 'water': int(water)})
+		electricity = int(tup[0])
+		water = int(tup[1])
+		ePercent = electricity / 50
+		wPercent = water/ 50
+
+		return render(request, self.template_name, {'electricity': electricity, 'water': water, 'electricityPercentage' : ePercent, 'waterPercentage': wPercent})
 
 class ControlFormView(View):
 	form_class = ControlForm
@@ -39,7 +42,8 @@ class SendFormView(View):
 
 	def get(self, request):
 		form = self.form_class(None)
-		return render(request, self.template_name, {'form': form})
+		userList = services.getUsers(request)
+		return render(request, self.template_name, {'form': form, 'userList': userList})
 
 	def post(self, request):
 		form = self.form_class(request.POST)
