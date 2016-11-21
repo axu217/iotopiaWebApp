@@ -8,7 +8,7 @@ ioTopiaWebApp is a web app that works as a part of an iOT environment that simul
 
 ### Tech
 
-Dillinger uses a number of technologies:
+ioTopia uses a number of technologies:
 
 * [Django] - Back-end framework!
 * [Twitter Bootstrap] - great UI boilerplate for modern web apps
