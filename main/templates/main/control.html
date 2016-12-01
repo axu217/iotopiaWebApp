@@ -11,6 +11,9 @@
 				<div class="panel-body">
 					
 					<div class="row">
+						<div class="col-md-12">
+							<h4>Current HVAC Settings:</h4>
+						</div>
 						<div class="col-sm-12 col-md-6">
 							<h4>North Zone Temperature: {{ northTemp }}</h4>
 							<h4>North Zone Low: {{ northLow }}</h4>
@@ -103,7 +106,7 @@
 
 					<div class="form-group">
 						<label for="id_lightingZoneNumber" class="form-control-label">Zone Number</label>
-						<select id="id_lightingZoneNumber" class="custom-select form-control" name="hvacLoc" type="number" required>
+						<select id="id_lightingZoneNumber" class="custom-select form-control" name="lightingZoneNumber" type="number" required>
 							<option selected>Select a zone below</option>
 						    <option value="1">1</option>
 							<option value="2">2</option>

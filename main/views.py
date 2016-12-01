@@ -66,10 +66,10 @@ class ControlFormView(View):
 	def post(self, request):
 
 		form = ""
-		print(request.POST)
 
-		if(request.POST.get('submitHVAC')):
+		if('submitHVAC' in request.POST):
 			form = self.form_class1(request.POST)
+			
 			if form.is_valid():
 				loc = form.cleaned_data['hvacLoc']
 				lowHigh = form.cleaned_data['lowHigh']
@@ -79,9 +79,9 @@ class ControlFormView(View):
 
 				return redirect('main:index')
 
-		if(request.POST.get('submitLighting')):
+		if('submitLighting' in request.POST):
 			form = self.form_class2(request.POST)
-
+			
 			if form.is_valid():
 				zoneNum = form.cleaned_data['lightingZoneNumber']
 				brightness = form.cleaned_data['brightness']

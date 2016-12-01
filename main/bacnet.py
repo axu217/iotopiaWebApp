@@ -129,7 +129,7 @@ def getHVAC(loc, kat):
             temp = zone_west_temp
 
     data = get_pi_bacnet(temp, '1s', '-1s', '*')
-    return int(data['Items'][0]['Value'])
+    return int(data['Items'][-1]['Value'])
 
 def getLighting(zoneNum):
     temp = ""
@@ -151,7 +151,7 @@ def getLighting(zoneNum):
         temp = zone_8_window_light
         
     data = get_pi_bacnet(temp, '10m', '-10m', '*')
-    return int(data['Items'][0]['Value'])
+    return int(data['Items'][-1]['Value'])
 
 def setHVAC(loc, kat, temperature):
     temp = ""
