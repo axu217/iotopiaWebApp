@@ -66,10 +66,10 @@ class ControlFormView(View):
 	def post(self, request):
 
 		form = ""
+		print(request.POST)
 
-		if(request.POST.get('HVACSubmit')):
+		if(request.POST.get('submitHVAC')):
 			form = self.form_class1(request.POST)
-
 			if form.is_valid():
 				loc = form.cleaned_data['hvacLoc']
 				lowHigh = form.cleaned_data['lowHigh']
@@ -79,7 +79,7 @@ class ControlFormView(View):
 
 				return redirect('main:index')
 
-		if(request.POST.get('LightingSubmit')):
+		if(request.POST.get('submitLighting')):
 			form = self.form_class2(request.POST)
 
 			if form.is_valid():
@@ -90,7 +90,7 @@ class ControlFormView(View):
 
 				return redirect('main:index')
 
-		return render(request, self.template_name, {'form': form})
+		return render(request, self.template_name)
 
 
 class SendFormView(View):
@@ -112,7 +112,7 @@ class SendFormView(View):
 			result = services.sendCredit(request, int(recipient), int(amount), int(energyType))
 
 			return redirect('main:index')
-		return render(request, self.template_name, {'form': form})
+		return render(request, self.template_name)
 	
 
 
