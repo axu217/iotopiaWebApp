@@ -109,9 +109,10 @@ body {
         flex-direction: row;
         justify-content: center; }
         .device .deviceControl .deviceControlForm .formUpper label {
+          display: block;
           width: auto !important;
           margin-right: 5px;
-          height: auto !important; }
+          white-space: nowrap; }
       .device .deviceControl .deviceControlForm .formLower {
         display: flex;
         flex-direction: row;
@@ -123,7 +124,6 @@ body {
           border-color: #54CECF !important; }
 
 .userPanel {
-  background-color: #54CECF;
   height: 100vh;
   padding-left: 20px;
   padding-right: 20px;
@@ -131,7 +131,19 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   position: relative;
-  overflow: hidden; }
+  overflow: hidden;
+  /* IE10+ */
+  background-image: -ms-linear-gradient(top, #5ADDDE 0%, #3FAFD9 100%);
+  /* Mozilla Firefox */
+  background-image: -moz-linear-gradient(top, #5ADDDE 0%, #3FAFD9 100%);
+  /* Opera */
+  background-image: -o-linear-gradient(top, #5ADDDE 0%, #3FAFD9 100%);
+  /* Webkit (Safari/Chrome 10) */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #5ADDDE), color-stop(100, #3FAFD9));
+  /* Webkit (Chrome 11+) */
+  background-image: -webkit-linear-gradient(top, #5ADDDE 0%, #3FAFD9 100%);
+  /* W3C Markup */
+  background-image: linear-gradient(to bottom, #5ADDDE 0%, #3FAFD9 100%); }
   .userPanel .userPanelHeader {
     text-align: center;
     height: 80px;
@@ -148,7 +160,7 @@ body {
     border-radius: 5px;
     border-color: white;
     border-style: solid;
-    border-size: 1px; }
+    border-width: 1px; }
   .userPanel .userPanelInfo {
     display: flex;
     width: 100%;
@@ -156,11 +168,13 @@ body {
     .userPanel .userPanelInfo h1 {
       color: white;
       font-size: 16px;
-      text-align: left; }
-    .userPanel .userPanelInfo h1 {
+      text-align: left;
+      font-weight: 300; }
+    .userPanel .userPanelInfo h2 {
       color: white;
       font-size: 16px;
-      text-align: right; }
+      text-align: right;
+      font-weight: 300; }
   .userPanel .userPanelSend {
     width: 100%;
     height: 40px;

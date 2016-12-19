@@ -49,3 +49,10 @@ class User:
 	def __init__(self, idInput, name):
 		self.id= idInput
 		self.name = name
+
+
+
+
+
+
+

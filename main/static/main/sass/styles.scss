@@ -160,9 +160,10 @@ body {
 				justify-content: center;
 
 				label {
+					display: block;
 					width: auto !important;
 					margin-right: 5px;
-					height: auto !important;
+					white-space:nowrap;
 				}
 			}
 
@@ -189,7 +190,7 @@ body {
 
 
 .userPanel{
-	background-color: #54CECF;
+	
 	height: 100vh;
 	padding-left: 20px;
 	padding-right: 20px;
@@ -198,6 +199,24 @@ body {
 	justify-content: flex-start;
 	position: relative;
 	overflow: hidden;
+
+	/* IE10+ */ 
+background-image: -ms-linear-gradient(top, #5ADDDE 0%, #3FAFD9 100%);
+
+/* Mozilla Firefox */ 
+background-image: -moz-linear-gradient(top, #5ADDDE 0%, #3FAFD9 100%);
+
+/* Opera */ 
+background-image: -o-linear-gradient(top, #5ADDDE 0%, #3FAFD9 100%);
+
+/* Webkit (Safari/Chrome 10) */ 
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #5ADDDE), color-stop(100, #3FAFD9));
+
+/* Webkit (Chrome 11+) */ 
+background-image: -webkit-linear-gradient(top, #5ADDDE 0%, #3FAFD9 100%);
+
+/* W3C Markup */ 
+background-image: linear-gradient(to bottom, #5ADDDE 0%, #3FAFD9 100%);
 
 	.userPanelHeader {
 		text-align: center;
@@ -210,6 +229,7 @@ body {
 			font-size: 20px;
 			color: white;
 			margin: 0px !important;
+
 		}
 	}
 
@@ -219,7 +239,7 @@ body {
 		border-radius: 5px;
 		border-color: white;
 		border-style: solid;
-		border-size: 1px;
+		border-width: 1px;
 	}
 
 	.userPanelInfo {
@@ -227,16 +247,18 @@ body {
 		width: 100%;
 		justify-content: space-between;
 
-		h1{
+		h1 {
 			color: white;
 			font-size: 16px;
 			text-align: left;
+			font-weight: 300;
 		}
 
-		h1{
+		h2 {
 			color: white;
 			font-size: 16px;
 			text-align: right;
+			font-weight: 300;
 		}	
 	}
 

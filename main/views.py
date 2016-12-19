@@ -62,7 +62,7 @@ class MainView(View):
 
 		if('submitHVAC' in request.POST):
 			return postHelper("HVAC", self, request)
-		elif('submitTrade' in request.POST):
+		elif('submitSendCredit' in request.POST):
 			return postHelper("trade", self, request)
 		elif('submitLighting' in request.POST):
 			return postHelper("lighting", self, request)
