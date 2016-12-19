@@ -46,7 +46,11 @@ body {
     height: 100%;
     float: left; }
     .device .deviceInfo .deviceIcon {
-      width: 300px; }
+      width: 300px;
+      padding-top: 20px;
+      padding-bottom: 20px; }
+      .device .deviceInfo .deviceIcon img {
+        max-height: 100%; }
     .device .deviceInfo .deviceLeft {
       display: flex;
       justify-content: center;
