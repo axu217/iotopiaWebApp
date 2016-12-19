@@ -9,14 +9,13 @@ class SubmitForm(forms.Form):
 	energyType = forms.ChoiceField(widget=forms.RadioSelect, choices=CHOICES)
 
 class HVACForm(forms.Form):
-	CHOICES = (('1', 'Low'), ('2', 'High'))
 
-	hvacLoc = forms.IntegerField()
-	lowHigh = forms.ChoiceField(widget=forms.RadioSelect, choices=CHOICES)
-	temperature = forms.IntegerField()
+	low = forms.IntegerField()
+	high = forms.IntegerField()
 
 class LightingForm(forms.Form):
 
-	lightingZoneNumber = forms.IntegerField()
 	brightness = forms.IntegerField()
-	
+class BlindsForm(forms.Form):
+
+	height = forms.IntegerField()

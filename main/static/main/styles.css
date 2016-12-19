@@ -1,17 +1,207 @@
 body {
-	background: white;
-	font-family: 'Open Sans';
-}
+  background: white;
+  font-family: 'Open Sans'; }
 
-.navbar {
-	border-radius: 0;
-}
+.menu {
+  background-color: #6A6A6A;
+  height: 100vh; }
 
-.navbar-brand {
-	font-family: 'Josefin Sans', cursive;
-}
+.control {
+  height: 100vh;
+  padding-left: 0px !important;
+  padding-right: 0px !important; }
 
-.sendHeading {
-	text-align: center;
-}
+.controlHeader {
+  padding-left: 40px;
+  height: 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #979797; }
+  .controlHeader h1 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0px !important; }
 
+.displayHeader {
+  height: 80px;
+  width: 100%; }
+
+.device {
+  width: 100%;
+  height: 200px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #979797;
+  overflow: hidden;
+  position: relative; }
+  .device .deviceInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    float: left; }
+    .device .deviceInfo .deviceIcon {
+      width: 300px; }
+    .device .deviceInfo .deviceLeft {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      flex-grow: 2; }
+      .device .deviceInfo .deviceLeft h1 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-top: -30px; }
+      .device .deviceInfo .deviceLeft h2 {
+        font-size: 16px;
+        margin-bottom: 4px !important;
+        margin-top: 4px !important; }
+    .device .deviceInfo .deviceRight {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center; }
+      .device .deviceInfo .deviceRight .deviceChange {
+        border-width: 2px;
+        border-color: #54CECF;
+        border-style: solid;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        margin-right: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        -webkit-transition: background-color .5s;
+        /* Safari */
+        transition: background-color .5s; }
+        .device .deviceInfo .deviceRight .deviceChange:hover {
+          background-color: #54CECF;
+          color: white;
+          cursor: pointer; }
+  .device .deviceControl {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 100%;
+    background-color: white; }
+    .device .deviceControl .deviceControlForm {
+      width: 100%;
+      height: 100%;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; }
+      .device .deviceControl .deviceControlForm .form-group {
+        display: flex;
+        align-items: center;
+        padding-left: 5px;
+        padding-right: 5px; }
+      .device .deviceControl .deviceControlForm .formUpper {
+        display: flex;
+        flex-direction: row;
+        justify-content: center; }
+        .device .deviceControl .deviceControlForm .formUpper label {
+          width: auto !important;
+          margin-right: 5px;
+          height: auto !important; }
+      .device .deviceControl .deviceControlForm .formLower {
+        display: flex;
+        flex-direction: row;
+        justify-content: center; }
+        .device .deviceControl .deviceControlForm .formLower h1 {
+          font-size: 16px; }
+        .device .deviceControl .deviceControlForm .formLower .btn-success {
+          background-color: #54CECF !important;
+          border-color: #54CECF !important; }
+
+.userPanel {
+  background-color: #54CECF;
+  height: 100vh;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  overflow: hidden; }
+  .userPanel .userPanelHeader {
+    text-align: center;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .userPanel .userPanelHeader h1 {
+      font-size: 20px;
+      color: white;
+      margin: 0px !important; }
+  .userPanel .userPanelChart {
+    height: 200px;
+    width: 100%;
+    border-radius: 5px;
+    border-color: white;
+    border-style: solid;
+    border-size: 1px; }
+  .userPanel .userPanelInfo {
+    display: flex;
+    width: 100%;
+    justify-content: space-between; }
+    .userPanel .userPanelInfo h1 {
+      color: white;
+      font-size: 16px;
+      text-align: left; }
+    .userPanel .userPanelInfo h1 {
+      color: white;
+      font-size: 16px;
+      text-align: right; }
+  .userPanel .userPanelSend {
+    width: 100%;
+    height: 40px;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-top: auto;
+    margin-bottom: 20px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-transition: background-color .5s;
+    /* Safari */
+    transition: background-color .5s;
+    -webkit-transition: color .5s;
+    /* Safari */
+    transition: color .5s; }
+    .userPanel .userPanelSend h1 {
+      font-size: 16px;
+      margin: 0px !important; }
+    .userPanel .userPanelSend:hover {
+      cursor: pointer;
+      background-color: white;
+      color: #54CECF; }
+  .userPanel .userPanelSendForm {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    left: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #54CECF;
+    color: white; }
+    .userPanel .userPanelSendForm h1 {
+      font-size: 20px; }
+    .userPanel .userPanelSendForm .sendButtonGroup {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+    .userPanel .userPanelSendForm div {
+      margin-left: 4px;
+      margin-right: 4px; }
+
+/*# sourceMappingURL=styles.css.map */

@@ -9,39 +9,11 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'main/styles.css' %}"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="{% static 'main/scripts.js' %}" ></script>
 
 </head>
 <body>
 	
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="{% url 'main:index' %}">ioTopia</a>
-			</div>
-			<div class="collapse navbar-collapse" id="topNavBar">
-				<ul class="nav navbar-nav navbar-right">
-					<li>
-						<a href="{% url 'main:control' %}">
-							<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&nbsp;
-							Devices
-						</a>
-					</li>
-					<li>
-						<a href="{% url 'main:send' %}">
-							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
-							Send Credits
-						</a>
-					</li>
-				</ul>
-
-			</div>
-		</div>
-	</nav>
 	
 	{% block body %}
 	{% endblock %}

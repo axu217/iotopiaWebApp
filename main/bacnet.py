@@ -165,7 +165,7 @@ def setHVAC(loc, kat, temperature):
         if kat == "low":
             temp = zone_west_low_set
         else:
-            temp = zone_west_temp_set
+            temp = zone_west_high_set
 
     set_pi_bacnet(temp, temperature)
 

@@ -1,0 +1,325 @@
+$primary-color: #54CECF;
+
+body {
+	background: white;
+	font-family: 'Open Sans';
+}
+
+.menu {
+	background-color: #6A6A6A;
+	height: 100vh;
+}
+
+.control{ 
+	
+	height: 100vh;
+
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+.controlHeader {
+	padding-left: 40px;
+	height: 80px;
+	width: 100%;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: #979797;
+
+	h1{
+		font-size: 20px;
+		font-weight: bold;
+		margin: 0px !important;
+	}
+
+}
+
+
+
+.displayHeader{
+	height: 80px;
+	width: 100%;
+
+}
+
+.device{
+	width: 100%;
+	height: 200px;
+
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: #979797;
+	
+	overflow: hidden;
+	position: relative;
+
+	.deviceInfo {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		width: 100%;
+		height: 100%;
+
+		float: left;
+
+		.deviceIcon {
+			width: 300px;
+		}
+
+		.deviceLeft {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+
+			flex-grow:  2;
+
+			h1 {
+				font-weight: bold;
+				font-size: 20px;
+				margin-top: -30px;
+			}
+
+			h2 {
+				font-size: 16px;
+				margin-bottom: 4px !important;
+				margin-top: 4px !important;
+
+			}
+		}
+
+
+
+		.deviceRight {
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+
+				.deviceChange {
+					border-width: 2px;
+					border-color: #54CECF;
+					border-style: solid;
+					width: 50px;
+					height: 50px;
+					border-radius: 50px;
+					margin-right: 20px;
+
+					display: flex;
+					justify-content: center;
+					align-items: center;
+
+					-webkit-transition: background-color .5s; /* Safari */
+    				transition: background-color .5s;
+
+					&:hover {
+						background-color: $primary-color;
+						color: white;
+						cursor: pointer;
+					}
+				}
+
+		}
+	}
+
+
+	.deviceControl {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0px;
+		left: 100%;
+		background-color: white;
+
+		.deviceControlForm {
+			width: 100%;
+			height: 100%;
+			padding-left: 20px;
+			padding-right: 20px;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+
+			.form-group {
+				display: flex;
+				align-items: center;
+				padding-left: 5px;
+				padding-right: 5px;
+				
+			}
+
+			.formUpper {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+
+				label {
+					width: auto !important;
+					margin-right: 5px;
+					height: auto !important;
+				}
+			}
+
+			.formLower {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+
+				h1 {
+					font-size: 16px;
+				}
+
+				.btn-success {
+					background-color: $primary-color !important;
+					border-color: $primary-color !important;
+				}
+			}
+		}
+	}
+
+}
+
+//USER PANEL --------------------------
+
+
+.userPanel{
+	background-color: #54CECF;
+	height: 100vh;
+	padding-left: 20px;
+	padding-right: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	position: relative;
+	overflow: hidden;
+
+	.userPanelHeader {
+		text-align: center;
+		height: 80px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		h1{
+			font-size: 20px;
+			color: white;
+			margin: 0px !important;
+		}
+	}
+
+	.userPanelChart {
+		height: 200px;
+		width: 100%;
+		border-radius: 5px;
+		border-color: white;
+		border-style: solid;
+		border-size: 1px;
+	}
+
+	.userPanelInfo {
+		display: flex;
+		width: 100%;
+		justify-content: space-between;
+
+		h1{
+			color: white;
+			font-size: 16px;
+			text-align: left;
+		}
+
+		h1{
+			color: white;
+			font-size: 16px;
+			text-align: right;
+		}	
+	}
+
+
+
+	.userPanelSend {
+		width: 100%;
+		height: 40px;
+		border: 1px solid white;
+		border-radius: 5px;
+		margin-top: auto;
+		margin-bottom: 20px;
+		color: white;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		-webkit-transition: background-color .5s; /* Safari */
+    	transition: background-color .5s;
+
+		-webkit-transition: color .5s; /* Safari */
+		transition: color .5s;
+
+		h1 {
+			font-size: 16px;
+			margin: 0px !important;
+		}
+
+
+
+		&:hover {
+			cursor: pointer;
+			background-color: white;
+			color: $primary-color;
+
+		}
+	}
+
+	.userPanelSendForm {
+		position: absolute; 
+		width: 100%;
+		height: 100vh;
+		left: 100%;
+		padding-left: 20px;
+		padding-right: 20px;
+		background-color: $primary-color;
+		color: white;
+
+		h1 {
+			font-size: 20px;
+		}
+
+		.sendButtonGroup {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		div {
+			margin-left: 4px;
+			margin-right: 4px;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+<form class="center-block" action="/main/" method="post" enctype="multipart/form-data">
+					{% csrf_token %}
+	<div class="formUpper">
+		<div class="form-group">
+			<label for="id_low" class="form-control-label">
+				Set Low: 
+			</label>
+
+			<input id="id_low" class="form-control" name="low" type="number" placeholder="{{ northLow }}" required></input>
+		</div>
+
+		<div class="form-group">
+			<label for="id_high" class="form-control-label">
+				Set High: 
+			</label>
+
+			<input id="id_high" class="form-control" name="high" type="number" placeholder="{{ northHigh }}" required></input>
+		</div>
+	</div>	
+
+	<div class="formLower">
+		<div class="form-group">
+			<div class="formReturnButton">
+				<button type="button" class="btn btn-danger center-block">Back</button>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div>
+				<button type="submit" name="submitHVAC" class="btn btn-success center-block">Set HVAC</button>
+			</div>
+		</div>
+
+	</div>			
+
+</form>

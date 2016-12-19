@@ -1,0 +1,28 @@
+<form class="center-block" action="/main/" method="post" enctype="multipart/form-data">
+					{% csrf_token %}
+	<div class="formUpper">
+		<div class="form-group">
+			<label for="id_height" class="form-control-label">
+							Height (Between 0 and 100)
+						</label>
+
+			<input id="id_height" class="form-control" name="height" type="number" required></input>
+		</div>
+	</div>	
+
+	<div class="formLower">
+		<div class="form-group">
+			<div class="formReturnButton">
+				<button type="button" class="btn btn-danger center-block">Back</button>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div>
+				<button type="submit" name="submitBlinds" class="btn btn-success center-block">Set Blinds</button>
+			</div>
+		</div>
+
+	</div>			
+
+</form>

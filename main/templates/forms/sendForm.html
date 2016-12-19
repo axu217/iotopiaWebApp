@@ -1,0 +1,51 @@
+<form class="center-block" action="/main/send/" method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	<h1>Send Credits</h1>
+
+	<div class="form-group">
+		<label for="id_recipient" class="form-control-label">Recipient</label>
+		<select id="id_recipient" class="custom-select form-control" name="recipient" type="number" required>
+			<option selected>Select a user below</option>
+			{% for user in userList %}
+		      <option value="{{ user.id }}">{{ user.name }}</option>
+		    {% endfor %}
+		</select>
+	</div>
+
+	<div class="form-group">
+		<label for="id_amount" class="form-control-label">
+			Amount
+		</label>
+		<input id="id_amount" class="form-control" name="amount" type="number" required></input>
+	</div>
+
+	<div class="form-group">
+		<label for="id_recipient" class="form-control-label">
+			Energy Type
+		</label>
+
+		<div class="form-check">
+			<label class="form-check-label">
+		    <input id="id_energyType_0" class="form-check-input" type="radio" name="energyType" value="1" required>
+		    Electricity
+			</label>
+		</div>
+
+		<div class="form-check">
+			<label class="form-check-label">
+		    <input id="id_energyType_1" class="form-check-input" type="radio" name="energyType" value="2" required>
+			Water
+			</label>
+		</div>
+		
+	</div>
+
+		<div class="form-group">
+			<div class="sendButtonGroup">
+				<div class="sendCreditReturnButton">
+					<button type="button" class="btn btn-danger">Back</button>
+				</div>
+				<button type="submit" class="btn btn-success">Send Credits</button>
+			</div>
+		</div>
+	</form>
