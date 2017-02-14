@@ -17,9 +17,26 @@
 </head>
 <body>
 	
-	
-	{% block body %}
-	{% endblock %}
+	<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-2 menu">
+			<div class="menuItem">
+				<a href="{% url 'main:index' %}">
+		        	<span class="glyphicon glyphicon-home"></span>&nbsp;Home
+		        </a>
+			</div>
+			<div class="menuItem">
+				<a href="{% url 'main:graphs' %}">
+		        	<span class="glyphicon glyphicon-tasks"></span>&nbsp;Graphs
+		        </a>
+			</div>
+		</div>
+		{% block body %}
+
+		{% endblock %}
+	</div>
+</div>
+
 
 </body>
 </html>

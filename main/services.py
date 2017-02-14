@@ -11,7 +11,7 @@ def getBalances(request):
 	headers = {'Authorization': "Token " + token}
 	r = requests.get(BaseURL + "get_credit_balances/", headers=headers, verify=False)
 	results = r.json()
-	
+
 	electricity = results[0]['balance']
 	water = results[1]['balance']
 

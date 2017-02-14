@@ -4,7 +4,20 @@ body {
 
 .menu {
   background-color: #6A6A6A;
-  height: 100vh; }
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 30px; }
+
+.menuItem {
+  height: 40px;
+  color: white;
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px; }
+  .menuItem a {
+    color: white; }
 
 .control {
   height: 100vh;

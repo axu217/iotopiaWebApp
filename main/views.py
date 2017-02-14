@@ -113,10 +113,12 @@ def postHelper(submitType, passView, request):
 
 	return render(request, self.template_name)
 
+class GraphsView(View):
+	template_name = 'main/graphs.html'
 
+	def get(self, request):
 
+		data = bacnet.getHVACHistory("north", "temp", "1d", "-7d", "8");
+		
 
-
-
-
-
+		return render(request, self.template_name)

@@ -131,6 +131,26 @@ def getHVAC(loc, kat):
     data = get_pi_bacnet(temp, '1s', '-1s', '*')
     return int(data['Items'][-1]['Value'])
 
+def getHVACHistory(loc, kat, interval, start, end):
+    temp = ""
+    if(loc == "north"):
+        if kat == "low":
+            temp = zone_north_low
+        elif kat == "high":
+            temp = zone_north_high
+        else:
+            temp = zone_north_temp
+    else:
+        if kat == "low":
+            temp = zone_west_low
+        elif kat == "high":
+            temp = zone_west_high
+        else:
+            temp = zone_west_temp
+
+    data = get_pi_bacnet(temp, interval, start, end)
+    print(data)
+
 def getLighting(zoneNum):
     temp = ""
     if zoneNum == 1:

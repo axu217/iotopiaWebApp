@@ -3,122 +3,118 @@
 {% load static from staticfiles %}
 {% block body %}
 
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-xs-2 menu">
+
+<div class="col-xs-7 control">
+	<div class="controlHeader">
+		<h1>iOTopia - Cory 446</h1>
+	</div>
+
+	<div class="device">
+		<div class="deviceInfo">
+			<div class="deviceIcon">
+				<img class="img-responsive" src="{% static "main/img/blade.svg" %}" alt="">
+			</div>
+			<div class="deviceLeft">
+				<h1>HVAC</h1>
+				<h2>High: {{ northHigh }} Low: {{ northLow }}</h2>
+				<h2>Current: {{ northTemp }}</h2>
+			</div>
+			<div class="deviceRight">
+				<div class="deviceChange" id="deviceChange1">
+					<span style="font-size: 25px"class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+				</div>
+			</div>
+		</div>
+
+		<div class="deviceControl">
+			<div class="deviceControlForm">
+				{% include 'forms/hvacForm.html' %}
+			</div>
 			
 		</div>
-		<div class="col-xs-7 control">
-			<div class="controlHeader">
-				<h1>iOTopia - Cory 446</h1>
+	</div>
+
+	<div class="device">
+		<div class="deviceInfo">
+			<div class="deviceIcon">
+				<img class="img-responsive" src="{% static "main/img/studying.svg" %}" alt="">
 			</div>
-
-			<div class="device">
-				<div class="deviceInfo">
-					<div class="deviceIcon">
-						<img class="img-responsive" src="{% static "main/img/blade.svg" %}" alt="">
-					</div>
-					<div class="deviceLeft">
-						<h1>HVAC</h1>
-						<h2>High: {{ northHigh }} Low: {{ northLow }}</h2>
-						<h2>Current: {{ northTemp }}</h2>
-					</div>
-					<div class="deviceRight">
-						<div class="deviceChange" id="deviceChange1">
-							<span style="font-size: 25px"class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-						</div>
-					</div>
-				</div>
-
-				<div class="deviceControl">
-					<div class="deviceControlForm">
-						{% include 'forms/hvacForm.html' %}
-					</div>
-					
-				</div>
+			<div class="deviceLeft">
+				<h1>Lighting</h1>
+				<h2>Brightness: {{ lighting1 }}</h2>
 			</div>
-
-			<div class="device">
-				<div class="deviceInfo">
-					<div class="deviceIcon">
-						<img class="img-responsive" src="{% static "main/img/studying.svg" %}" alt="">
-					</div>
-					<div class="deviceLeft">
-						<h1>Lighting</h1>
-						<h2>Brightness: {{ lighting1 }}</h2>
-					</div>
-					<div class="deviceRight">
-						<div class="deviceChange" id="deviceChange2">
-							<span style="font-size: 25px"class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-						</div>
-					</div>
+			<div class="deviceRight">
+				<div class="deviceChange" id="deviceChange2">
+					<span style="font-size: 25px"class="glyphicon glyphicon-cog" aria-hidden="true"></span>
 				</div>
-
-				<div class="deviceControl">
-					<div class="deviceControlForm">
-						{% include 'forms/lightingForm.html' %}
-					</div>
-				</div>
-			</div>
-
-			<div class="device">
-				<div class="deviceInfo">
-					<div class="deviceIcon">
-						<img class="img-responsive" src="{% static "main/img/internet-connection.svg" %}" alt="">
-					</div>
-					<div class="deviceLeft">
-						<h1>Blinds</h1>
-						<h2>Height: 50%</h2>
-					</div>
-					<div class="deviceRight">
-						<div class="deviceChange" id="deviceChange3">
-							<span style="font-size: 25px"class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-						</div>
-					</div>
-				</div>
-
-				<div class="deviceControl">
-					<div class="deviceControlForm">
-						{% include 'forms/blindsForm.html' %}
-					</div>
-				</div>
-			</div>
-
-		</div>
-		<div class="col-xs-3 userPanel">
-			<div class="userPanelHeader">
-				<h1>User Panel</h1>
-			</div>
-			<div class="userPanelChart">
-				
-			</div>
-			<div class="userPanelInfo">
-				<div class="userPanelInfoLeft">
-					<h1>Name: </h1>
-					<h1>Location:</h1>
-					<h1>Energy: </h1>
-					<h1>Water: </h1>
-				</div>
-
-				<div class="userPanelInfoRight">
-					<h2>Albert Xu</h2>
-					<h2>Cory 446</h2>
-					<h2>{{ electricity }}</h2>
-					<h2>{{ water }}</h2>	
-				</div>
-				
-			</div>
-			<div class="userPanelSend">
-				<h1>Send Credits</h1>
-			</div>
-
-			<div class="userPanelSendForm">
-				{% include 'forms/sendForm.html' %}
 			</div>
 		</div>
 
+		<div class="deviceControl">
+			<div class="deviceControlForm">
+				{% include 'forms/lightingForm.html' %}
+			</div>
+		</div>
+	</div>
+
+	<div class="device">
+		<div class="deviceInfo">
+			<div class="deviceIcon">
+				<img class="img-responsive" src="{% static "main/img/internet-connection.svg" %}" alt="">
+			</div>
+			<div class="deviceLeft">
+				<h1>Blinds</h1>
+				<h2>Height: 50%</h2>
+			</div>
+			<div class="deviceRight">
+				<div class="deviceChange" id="deviceChange3">
+					<span style="font-size: 25px"class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+				</div>
+			</div>
+		</div>
+
+		<div class="deviceControl">
+			<div class="deviceControlForm">
+				{% include 'forms/blindsForm.html' %}
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div class="col-xs-3 userPanel">
+	<div class="userPanelHeader">
+		<h1>User Panel</h1>
+	</div>
+	<div class="userPanelChart">
+		
+	</div>
+	<div class="userPanelInfo">
+		<div class="userPanelInfoLeft">
+			<h1>Name: </h1>
+			<h1>Location:</h1>
+			<h1>Energy: </h1>
+			<h1>Water: </h1>
+		</div>
+
+		<div class="userPanelInfoRight">
+			<h2>Albert Xu</h2>
+			<h2>Cory 446</h2>
+			<h2>{{ electricity }}</h2>
+			<h2>{{ water }}</h2>	
+		</div>
+		
+	</div>
+	<div class="userPanelSend">
+		<h1>Send Credits</h1>
+	</div>
+
+	<div class="userPanelSendForm">
+		{% include 'forms/sendForm.html' %}
 	</div>
 </div>
+
+
 
 
 {% endblock %}
