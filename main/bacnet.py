@@ -149,7 +149,30 @@ def getHVACHistory(loc, kat, interval, start, end):
             temp = zone_west_temp
 
     data = get_pi_bacnet(temp, interval, start, end)
-    print(data)
+    return data
+
+def getLightingHistory(zoneNum, interval, start, end):
+    temp =""
+    if zoneNum == 1:
+        temp = zone_1_window_light
+    if zoneNum == 2:
+        temp = zone_2_window_light
+    if zoneNum == 3:
+        temp = zone_3_window_light
+    if zoneNum == 4:
+        temp = zone_4_window_light
+    if zoneNum == 5:
+        temp = zone_5_window_light
+    if zoneNum == 6:
+        temp = zone_6_window_light
+    if zoneNum == 7:
+        temp = zone_7_window_light
+    if zoneNum == 8:
+        temp = zone_8_window_light
+    data = get_pi_bacnet(temp, interval, start, end)
+
+    return data
+
 
 def getLighting(zoneNum):
     temp = ""
@@ -211,6 +234,12 @@ def setLighting(zoneNum, brightness):
 
     set_pi_bacnet(temp, brightness)
 
+def setBlinds(percentage):
+    set_pi_bacnet(roller_blind_left_set, percentage)
+
+def getBlinds():
+    data = get_pi_bacnet(roller_blind_left, '1s', '-1s', '*')
+    return int(data['Items'][-1]['Value'])
 
 
 

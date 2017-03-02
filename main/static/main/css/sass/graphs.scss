@@ -1,0 +1,32 @@
+
+.graphInner {
+	width: 100%;
+}
+
+
+.graphLeft {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100vh;
+}
+
+.graphOptionItem {
+	display: flex;
+	align-items: center;
+	white-space:nowrap;
+	margin-bottom: 8px;
+}
+
+.graphRight {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 100vh;
+	max-height: 100vh;
+
+	.chart {
+		margin-bottom: 15px;
+	}
+}

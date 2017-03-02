@@ -3,10 +3,204 @@
 {% load static from staticfiles %}
 {% block body %}
 
-<div class="col-xs-10">
+<div class="col-xs-10 chartContainer">
+
 	
+	<div class="row graphInner">
+		<div class="graphLeft col-xs-3">
+			<div class="typeItem graphOptionItem">
+				<div class="typeItemLabel">
+					Chart Type:&nbsp;&nbsp;
+				</div>
+				<div class="dropdown">
+					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Choose a type
+					</button>
+
+					<ul id="typeDropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				        <li><a class="dropdown-item" value="1" href="#">HVAC</a></li>
+				        <li><a class="dropdown-item" value="2" href="#">Lighting</a></li>
+				    </ul>
+				</div>
+
+			</div>
+
+			<div class="intervalItem graphOptionItem">
+				<div class="typeItemLabel">
+					X-Interval:&nbsp;&nbsp;
+				</div>
+				<div class="dropdown">
+					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Choose a time interval
+					</button>
+
+					<ul id="typeDropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				        <li><a class="dropdown-item" value="1h" href="#">1 Hour</a></li>
+				        <li><a class="dropdown-item" value="1d" href="#">1 Day</a></li>
+				    </ul>
+				</div>
+			</div>
+
+			<div class="durationItem graphOptionItem">
+				<div class="typeItemLabel">
+					Duration:&nbsp;&nbsp;
+				</div>
+				<div class="dropdown">
+					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Choose a time duration
+					</button>
+
+					<ul id="typeDropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<li><a class="dropdown-item" value="-1d" href="#">1 Day</a></li>
+				        <li><a class="dropdown-item" value="-7d" href="#">1 Week</a></li>
+				        <li><a class="dropdown-item" value="-30d" href="#">1 Month</a></li>
+				    </ul>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="col-xs-9 graphRight">
+			<div class="chart" style="width: 620px">
+				<canvas id="myChart" width="400" height="400"></canvas>
+			</div>
+
+			<button type="button" class="btn btn-info" onclick="updateChart()" >Refresh</button>
+			
+			</div>
+		</div>
+
+	</div>
 	
 
 </div>
+
+<script>
+
+		var typeOfCredit = "1"
+		var xinterval = "1d"
+		var duration ="7d"
+
+		$('.dropdown a').click(function(e){
+		    $(this).closest('.graphOptionItem').find('button').text($(this).text());
+
+		    if($(this).closest('.graphOptionItem').hasClass('typeItem')) {
+		    	typeOfCredit = $(this).attr("value");
+		    } else if ($(this).closest('.graphOptionItem').hasClass('intervalItem')) {
+		    	xinterval = $(this).attr("value");
+		    } else {
+		    	duration = $(this).attr("value");
+		    }
+
+		   
+		});
+
+
+		var ctx = document.getElementById("myChart").getContext("2d");;
+
+    	var inputLabels = {{ HVAClabels|safe }};
+    	var vals = {{ HVACvals|safe }};
+
+
+
+		var myChart = new Chart(ctx, {
+		  type: 'line',
+		  data: {
+		    labels: inputLabels,
+		    datasets: [{
+		    	label: "Past Week Temperatures",
+				data: vals,
+				fill: false,
+				borderColor: "#54CECF"
+				
+
+		    }],
+		    
+		  },
+		  options: {
+		    	responsive: true,
+				maintainAspectRatio: false,
+				scales: {
+			        yAxes: [{
+			            display: true,
+			            ticks: {
+			                suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
+			                // OR //
+			                beginAtZero: true   // minimum value will be 0.
+			            }
+			        }]
+			    }
+		    }
+
+
+		});
+
+		function updateChart() {
+			
+
+			$.ajax({
+	            type: 'GET',
+	            async: true,
+	            url: "/rest_api/getChartData/",
+	            data: {
+	                'typeOfCredit': typeOfCredit,
+	                'xinterval' : xinterval,
+	                'duration' : duration,
+	            },
+	            success: function (response) {
+
+
+	            	$('#myChart').replaceWith('<canvas id="myChart" width="400" height="400"></canvas>');
+	            	var ctx = document.getElementById("myChart").getContext("2d");
+
+	            	var inputLabels = response['labels'];
+   					var vals = response['vals'];
+   					var title;
+
+   					if(typeOfCredit == "1") {
+   						title = "Past Week Temperatures";
+   					} else {
+   						title = "Past Week Lighting"
+   					}
+   					
+
+	            	var myChart = new Chart(ctx, {
+					  type: 'line',
+					  data: {
+					    labels: inputLabels,
+					    datasets: [{
+					    	label: title,
+							data: vals,
+							fill: false,
+							borderColor: "#54CECF"
+					    }],
+					    
+					  },
+					  options: {
+					    	responsive: true,
+							maintainAspectRatio: false,
+							scales: {
+						        yAxes: [{
+						            display: true,
+						            ticks: {
+						                suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
+						                // OR //
+						                beginAtZero: true   // minimum value will be 0.
+						            }
+						        }]
+						    }
+					    }
+
+
+					});
+	            }
+	        });
+
+		}
+
+    	
+
+
+</script>
 
 {% endblock %}

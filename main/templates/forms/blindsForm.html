@@ -2,20 +2,20 @@
 					{% csrf_token %}
 	<div class="formUpper">
 		<div class="form-group">
-			<label for="id_height" class="form-control-label">
-							Height
-						</label>
+			<label for="id_height" class="form-control-label">Height</label>
 
-			<input id="id_height" class="form-control" name="height" type="number" placeholder="(Between 0 and 100)" required></input>
+		<input id="id_height" name="height"   
+		    type="range"
+		    min="0"                    // default 0
+		    max="100"                  // default 100
+		    step="25"                   // default 1
+		    value="{{ Blindvals }}"                 // default min + (max-min)/2
+		    data-orientation="horizontal" // default horizontal
+		>
 		</div>
 	</div>	
 
 	<div class="formLower">
-		<div class="form-group">
-			<div class="formReturnButton">
-				<button type="button" class="btn btn-danger center-block">Back</button>
-			</div>
-		</div>
 
 		<div class="form-group">
 			<div>

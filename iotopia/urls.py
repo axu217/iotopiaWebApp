@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^$', views.UserFormView.as_view(), name='login'),
    	url(r'^main/', include('main.urls')),
    	url(r'^login/', include('login.urls')),
+    url(r'^rest_api/', include('rest_api.urls')),
 ]

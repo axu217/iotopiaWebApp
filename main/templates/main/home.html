@@ -44,17 +44,10 @@
 				<h2>Brightness: {{ lighting1 }}</h2>
 			</div>
 			<div class="deviceRight">
-				<div class="deviceChange" id="deviceChange2">
-					<span style="font-size: 25px"class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-				</div>
-			</div>
-		</div>
-
-		<div class="deviceControl">
-			<div class="deviceControlForm">
 				{% include 'forms/lightingForm.html' %}
 			</div>
 		</div>
+
 	</div>
 
 	<div class="device">
@@ -64,20 +57,14 @@
 			</div>
 			<div class="deviceLeft">
 				<h1>Blinds</h1>
-				<h2>Height: 50%</h2>
+				<h2>Height: {{ Blindvals }}%</h2>
 			</div>
 			<div class="deviceRight">
-				<div class="deviceChange" id="deviceChange3">
-					<span style="font-size: 25px"class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-				</div>
+				
+					{% include 'forms/blindsForm.html' %}
 			</div>
 		</div>
 
-		<div class="deviceControl">
-			<div class="deviceControlForm">
-				{% include 'forms/blindsForm.html' %}
-			</div>
-		</div>
 	</div>
 
 </div>
@@ -87,7 +74,54 @@
 		<h1>User Panel</h1>
 	</div>
 	<div class="userPanelChart">
-		
+		<div class="progress">
+		  <div class="progress-bar p1 progress-bar-info" role="progressbar" aria-valuenow="{{ water|safe }}"
+		  aria-valuemin="0" aria-valuemax="5000">
+		    Water: 
+		  </div>
+		</div>
+		<div class="progress">
+		  <div class="progress-bar p2 progress-bar-warning" role="progressbar" aria-valuenow="{{ electricity|safe }}"
+		  aria-valuemin="0" aria-valuemax="5000">
+		    Electricity: 
+		  </div>
+		</div>
+
+		<script>
+    	
+
+    	var inputLabels = {{ HVAClabels|safe }}
+    	var vals = {{ HVACvals|safe }}
+
+    	var electricity = {{ electricity|safe }}
+    	var water = {{ water|safe }}
+    	var restElec = 5000 - electricity
+    	var restWater = 5000 - water
+
+    	var electricityPercent = Math.floor(electricity / 50)
+    	var waterPercent = Math.floor(water / 50)
+
+    	$('.p1').css({
+    		width: waterPercent + "%"
+    	});
+
+    	$('.p1').text("Water: " + waterPercent + "%")
+    	$('.p2').text("Electricity: " + electricityPercent + "%")
+
+    	$('.p2').css({
+    		width: electricityPercent + "%"
+    	});
+
+    	$('input[type="range"]').rangeslider({
+    polyfill : false,
+    
+});
+
+		</script>
+
+
+
+
 	</div>
 	<div class="userPanelInfo">
 		<div class="userPanelInfoLeft">
@@ -95,6 +129,7 @@
 			<h1>Location:</h1>
 			<h1>Energy: </h1>
 			<h1>Water: </h1>
+
 		</div>
 
 		<div class="userPanelInfoRight">

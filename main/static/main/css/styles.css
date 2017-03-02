@@ -1,3 +1,31 @@
+.graphInner {
+  width: 100%; }
+
+.graphLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh; }
+
+.graphOptionItem {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  margin-bottom: 8px; }
+
+.graphRight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  max-height: 100vh; }
+  .graphRight .chart {
+    margin-bottom: 15px; }
+
+a:hover {
+  text-decoration: none; }
+
 body {
   background: white;
   font-family: 'Open Sans'; }
@@ -10,6 +38,11 @@ body {
   justify-content: center;
   padding-left: 30px; }
 
+canvas {
+  width: 100% !important;
+  max-width: 800px;
+  height: auto !important; }
+
 .menuItem {
   height: 40px;
   color: white;
@@ -18,6 +51,12 @@ body {
   margin-bottom: 10px; }
   .menuItem a {
     color: white; }
+
+.chartContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; }
 
 .control {
   height: 100vh;
@@ -67,8 +106,7 @@ body {
     .device .deviceInfo .deviceLeft {
       display: flex;
       justify-content: center;
-      flex-direction: column;
-      flex-grow: 2; }
+      flex-direction: column; }
       .device .deviceInfo .deviceLeft h1 {
         font-weight: bold;
         font-size: 20px;
@@ -79,8 +117,9 @@ body {
         margin-top: 4px !important; }
     .device .deviceInfo .deviceRight {
       display: flex;
-      justify-content: flex-end;
-      align-items: center; }
+      justify-content: center;
+      align-items: center;
+      flex-grow: 2; }
       .device .deviceInfo .deviceRight .deviceChange {
         border-width: 2px;
         border-color: #54CECF;
@@ -177,7 +216,16 @@ body {
     border-radius: 5px;
     border-color: white;
     border-style: solid;
-    border-width: 1px; }
+    border-width: 1px;
+    padding-left: 16px;
+    padding-right: 16px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column; }
+    .userPanel .userPanelChart .progress {
+      margin-bottom: 0px !important; }
+    .userPanel .userPanelChart .progress:first-child {
+      margin-bottom: 16px !important; }
   .userPanel .userPanelInfo {
     display: flex;
     width: 100%;

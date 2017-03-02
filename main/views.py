@@ -10,8 +10,8 @@ class MainView(View):
 	
 	def get(self, request):
 		tup = services.getBalances(request)
-		electricity = int(tup[0])
-		water = int(tup[1])
+		electricity = float(tup[0])
+		water = float(tup[1])
 		ePercent = electricity / 50
 		wPercent = water/ 50
 
@@ -43,7 +43,7 @@ class MainView(View):
 		lighting7 = bacnet.getLighting(7)
 		lighting8 = bacnet.getLighting(8)
 
-		passIn['lighting1'] = lighting1
+		passIn['lighting1'] = min(lighting1, 100)
 		passIn['lighting2'] = lighting2
 		passIn['lighting3'] = lighting3
 		passIn['lighting4'] = lighting4
@@ -56,6 +56,19 @@ class MainView(View):
 
 		passIn['userList'] = userList
 
+		data = bacnet.getHVACHistory("north", "temp", "1d", "-7d", "*");
+
+		data = data['Items']
+		data = [(x["Value"], x["Timestamp"][5:10]) for x in data]
+		labels = [str(x[1]) for x in data]
+		vals = [x[0] for x in data]
+		
+		passIn['HVAClabels'] = labels
+		passIn['HVACvals'] = vals
+
+		data = bacnet.getBlinds();
+		passIn['Blindvals'] = data
+
 		return render(request, self.template_name, passIn)
 
 	def post(self, request):
@@ -66,7 +79,7 @@ class MainView(View):
 			return postHelper("trade", self, request)
 		elif('submitLighting' in request.POST):
 			return postHelper("lighting", self, request)
-		elif('submitLighting' in request.POST):
+		elif('submitBlinds' in request.POST):
 			return postHelper("blinds", self, request)  
 		else:
 			return 0
@@ -103,13 +116,22 @@ def postHelper(submitType, passView, request):
 
 			return redirect('main:index')
 
-		else:
+		elif(submitType == "lighting"):
 			zoneNum = 1
 			brightness = form.cleaned_data['brightness']
 
 			result = bacnet.setLighting(zoneNum, brightness)
 
 			return redirect('main:index')
+		else:
+			print("\n \n YOLOBBY \n \n ")
+			percentage = form.cleaned_data['height']
+			result = bacnet.setBlinds(percentage)
+
+			return redirect('main:index')
+
+
+
 
 	return render(request, self.template_name)
 
@@ -118,7 +140,34 @@ class GraphsView(View):
 
 	def get(self, request):
 
-		data = bacnet.getHVACHistory("north", "temp", "1d", "-7d", "8");
-		
+		data = bacnet.getHVACHistory("north", "temp", "1d", "-7d", "*");
 
-		return render(request, self.template_name)
+		data = data['Items']
+		data = [(x["Value"], x["Timestamp"][5:10]) for x in data]
+		labels = [str(x[1]) for x in data]
+		vals = [x[0] for x in data]
+
+		passIn = {}
+		passIn['HVAClabels'] = labels
+		passIn['HVACvals'] = vals
+
+		data = bacnet.getLightingHistory(1, "1d", "-7d", "*");
+
+		data = data['Items']
+		data = [(x["Value"], x["Timestamp"][5:10]) for x in data]
+		labels = [str(x[1]) for x in data]
+		vals = [x[0] for x in data]
+
+		passIn['Lightinglabels'] = labels
+		passIn['Lightingvals'] = vals
+
+
+		return render(request, self.template_name, passIn)
+
+
+
+
+
+
+
+
